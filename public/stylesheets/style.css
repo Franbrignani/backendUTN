@@ -1,0 +1,42 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+header, h1, nav{
+  background-color: rgb(20, 78, 9);
+  margin: 0;
+}
+
+#titulo{
+  color: #fff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-left: 10px;
+}
+
+.libro{
+  height: 30px;
+}
+
+footer{
+  background-color:rgb(20, 78, 9);
+  color: white;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.footer__name{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.footer__icons{
+  display: flex;
+  float: right;
+  height: 25px;
+  padding-right: 10px;
+}
+
+.logosr{
+  height: 30px;
+}
