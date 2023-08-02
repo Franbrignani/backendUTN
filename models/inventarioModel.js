@@ -9,7 +9,7 @@ async function getInventario(){
 
 async function insertlibro(obj) {
     try{
-        var query = "insert into inventario set ?";
+        var query = "insert into inventariodelibros set ?";
         var rows = await pool.query(query, [obj])
         return rows;
         

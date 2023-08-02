@@ -22,6 +22,9 @@ router.get('/nuevo', (req, res, next) => {
 
 router.post('/nuevo', async (req, res, next) => {
   try{
+
+    console.log(req.body)
+
     if (req.body.titulo != "" && req.body.genero != "" && req.body.autor != "") {
       await inventarioModel.insertlibro(req.body);
       res.redirect('/admin/inventario')
@@ -40,6 +43,6 @@ router.post('/nuevo', async (req, res, next) => {
       message: 'No se cargo el libro'
     })
   }
-});
+})
 
 module.exports = router;
