@@ -14,4 +14,32 @@ router.get('/', async function(req, res, next) {
   });
 });
 
+router.get('/nuevo', (req, res, next) => {
+  res.render('admin/nuevo', {
+    layout: 'admin/layout'
+  })
+});
+
+router.post('/nuevo', async (req, res, next) => {
+  try{
+    if (req.body.titulo != "" && req.body.genero != "" && req.body.autor != "") {
+      await inventarioModel.insertlibro(req.body);
+      res.redirect('/admin/inventario')
+    } else {
+      res.render('admin/nuevo', {
+        layout: 'admin/layout',
+        error: true,
+        message: 'Todos los campos son requeridos'
+      })
+    }
+  } catch (error){
+    console.log(error)
+    res.render('admin/nuevo', {
+      layout: 'admin/layout',
+      error: true,
+      message: 'No se cargo el libro'
+    })
+  }
+});
+
 module.exports = router;
