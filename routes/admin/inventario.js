@@ -43,6 +43,44 @@ router.post('/nuevo', async (req, res, next) => {
       message: 'No se cargo el libro'
     })
   }
+});
+
+router.get('/eliminar/:id', async (req, res, next) => {
+  var id = req.params.id;
+  await inventarioModel.borrarlibrobyId(id);
+  res.redirect('/admin/inventario');
+});
+
+router.get('/modificar/:id', async (req, res, next) => {
+  var id = req.params.id;
+  console.log(req.params.id);
+  var libro = await inventarioModel.getlibrobyId(id);
+
+  res.render('admin/modificar', {
+    layout: 'admin/layout',
+    libro
+  })
+});
+
+router.post('/modificar', async (req, res, next) => {
+  try{
+    var obj = {
+      titulo: req.body.titulo,
+      genero: req.body.genero,
+      autor: req.body.autor
+    }
+    console.log(obj)
+    
+    await inventarioModel.modificarlibrobyId(obj, req.body.id);
+    res.redirect('/admin/inventario');
+  } catch (error) {
+    console.log(error)
+    res.render('admin/modificar', {
+      layout: 'admin/layout',
+      error: true,
+      message: 'No se modifico el libro'
+    })
+  }
 })
 
 module.exports = router;
